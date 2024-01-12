@@ -1,22 +1,45 @@
 {
   "name": "loghuu",
-  "displayName": "loghuu",
-  "description": "Console Region Hue",
+  "displayName": "Loghuu",
+  "description": "VSCode extension for enhanced console logging and code region management.",
   "version": "0.0.1",
   "publisher": "sharebravery",
+  "icon": "static/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sharebravery/vscode-loghuu"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
+  "keywords": [
+    "console",
+    "log",
+    "console.log",
+    "region",
+    "vs code console",
+    "打印",
+    "折叠代码"
+  ],
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:loghuu.consoleLog",
+    "onCommand:loghuu.addRegionToSelection"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "loghuu.consoleLog",
-        "title": "Loghuu"
+        "title": "Loghuu ConsoleLog",
+        "category": "Loghuu"
+      },
+      {
+        "command": "loghuu.addRegionToSelection",
+        "title": "Add Region to Selection",
+        "category": "Loghuu"
       }
     ],
     "keybindings": [
@@ -25,6 +48,11 @@
         "key": "ctrl+l",
         "mac": "cmd+l",
         "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+shift+r",
+        "command": "loghuu.addRegionToSelection",
+        "when": "editorTextFocus && editorHasSelection"
       }
     ]
   },
@@ -37,14 +65,16 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.85.0",
+    "@release-it/conventional-changelog": "^8.0.1",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3",
     "@vscode/test-cli": "^0.0.4",
-    "@vscode/test-electron": "^2.3.8"
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.56.0",
+    "release-it": "^17.0.1",
+    "typescript": "^5.3.3"
   }
 }

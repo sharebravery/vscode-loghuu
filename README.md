@@ -1,71 +1,40 @@
-# loghuu README
+# Loghuu - VSCode Console Region
 
-This is the README for your extension "loghuu". After writing up a brief description, we recommend including the following sections.
+Loghuu is a Visual Studio Code extension that enhances console logging by providing colorful log statements with regions for better code organization.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Insert console.log statements with visible colors.
+- Automatically add regions around selected code.
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Open Visual Studio Code.
+2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or use the keyboard shortcut `Ctrl+Shift+X`.
+3. Search for "Loghuu".
+4. Click the Install button for "Loghuu" by ShareBravery.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Usage
 
-## Requirements
+### Insert Console.log Statement
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. Select the code you want to log.
+2. Press `Ctrl+L` (or `Cmd+L` on macOS) to insert a console.log statement with visible colors.
 
-## Extension Settings
+### Add Region to Selection
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+1. Select the code you want to wrap with a region.
+2. Press `Ctrl+Shift+R` to add a region around the selected code.
 
-For example:
+## Configuration
 
-This extension contributes the following settings:
+- The extension automatically adapts to the theme's brightness (light or dark).
+- If the selected text is 'error' or 'err', it will use `console.error` instead of `console.log`.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## Contributing
 
-## Known Issues
+Contributions are welcome! Please fork the repository and create a pull request.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## License
 
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
