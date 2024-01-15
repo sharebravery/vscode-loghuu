@@ -4,7 +4,7 @@ export function buildConsoleStatement(selectedText: string, currentLineNumber: n
   const randomColor = getRandomColor(10)
 
   if (selectedText && (selectedText.toLowerCase() === 'error' || selectedText.toLowerCase() === 'err')) {
-    return `console.error('%c🚀[${selectedText}]-${currentLineNumber}:', 'color: ${randomColor}', ${selectedText});\n`
+    return `console.error('%c[${selectedText}]-${currentLineNumber}:', 'color: ${randomColor}', ${selectedText});\n`
   }
   else {
     return selectedText
