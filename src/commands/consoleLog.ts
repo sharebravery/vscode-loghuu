@@ -41,21 +41,24 @@ export function insertConsoleStatement() {
           const secondCommaIndex = consoleStatement.indexOf(',', consoleStatement.indexOf(',') + 1)
           const openBracketPosition = new vscode.Position(currentLineNumber + 1, currentLineIndentation.length + secondCommaIndex + 1)
 
-          const closeBracketPosition = new vscode.Position(currentLineNumber + 1, currentLineIndentation.length + consoleStatement.indexOf(')') - 1)
+          const closeBracketPosition = new vscode.Position(currentLineNumber + 1, currentLineIndentation.length + consoleStatement.indexOf(')'))
           editor.selection = new vscode.Selection(openBracketPosition, closeBracketPosition)
         }
         else {
-          // 如果没有选中文本，则插入到当前行，并保持相同的缩进
-          await editBuilder.insert(currentPosition, currentLineIndentation + consoleStatement)
+          // 如果没有选中文本，则插入到当前行
+          await editBuilder.insert(currentPosition, consoleStatement)
 
-          const firstPosition = new vscode.Position(currentPosition.line, currentLineIndentation.length + consoleStatement.indexOf('[') + 1)
+          const lightLength = editor.selection.active.character
 
-          const secondCommaIndex = consoleStatement.indexOf(',', consoleStatement.indexOf(',') + 1)
-          const openBracketPosition = new vscode.Position(currentPosition.line, currentLineIndentation.length + secondCommaIndex + 1)
+          const firstCommaIndex = lightLength + consoleStatement.indexOf('[') + 1
+
+          const firstPosition = new vscode.Position(currentPosition.line, firstCommaIndex)
+
+          const secondPosition = new vscode.Position(currentPosition.line, firstCommaIndex + 23 + currentLineNumber.toString().length)
 
           editor.selections = [
-            new vscode.Selection(openBracketPosition, openBracketPosition),
             new vscode.Selection(firstPosition, firstPosition),
+            new vscode.Selection(secondPosition, secondPosition),
           ]
         }
       })
