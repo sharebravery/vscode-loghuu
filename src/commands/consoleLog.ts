@@ -33,7 +33,7 @@ export function insertConsoleStatement() {
           editor.selection = new vscode.Selection(openBracketPosition, closeBracketPosition)
         }
         else {
-          const consoleStatement = buildConsoleStatement(selectedText, currentLineNumber)
+          const consoleStatement = buildConsoleStatement(selectedText, currentLineNumber + 1)
 
           // 如果没有选中文本，则插入到当前行
           await editBuilder.insert(currentPosition, consoleStatement)
