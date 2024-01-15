@@ -26,28 +26,31 @@ export function insertConsoleStatement() {
           : `console.log(' %c[]-${currentLineNumber}:', 'color: ${randomColor}',);`
       }
 
+      // 获取选中内容的起始位置
+      const selectionStart = editor.selection.start
+
       // 获取当前光标位置
       const currentPosition = editor.selection.active
 
       await editor.edit(async (editBuilder) => {
         if (selectedText) {
-          // 如果有选中文本，则插入到下一行
-          await editBuilder.insert(new vscode.Position(currentLineNumber + 1, 0), consoleStatement)
+          // 如果有选中文本，则插入到下一行，并保持左缩进
+          await editBuilder.insert(new vscode.Position(currentLineNumber + 1, selectionStart.character), consoleStatement)
 
           const secondCommaIndex = consoleStatement.indexOf(',', consoleStatement.indexOf(',') + 1)
-          const openBracketPosition = new vscode.Position(currentLineNumber + 1, secondCommaIndex + 1)
+          const openBracketPosition = new vscode.Position(currentLineNumber + 1, selectionStart.character + secondCommaIndex + 1)
 
-          const closeBracketPosition = new vscode.Position(currentLineNumber + 1, consoleStatement.indexOf(')') - 1)
+          const closeBracketPosition = new vscode.Position(currentLineNumber + 1, selectionStart.character + consoleStatement.indexOf(')') - 1)
           editor.selection = new vscode.Selection(openBracketPosition, closeBracketPosition)
         }
         else {
-          // 如果没有选中文本，则插入到当前行
+          // 如果没有选中文本，则插入到当前行，并保持左缩进
           await editBuilder.insert(currentPosition, consoleStatement)
 
-          const firstPosition = new vscode.Position(currentPosition.line, consoleStatement.indexOf('[') + 1)
+          const firstPosition = new vscode.Position(currentPosition.line, selectionStart.character + consoleStatement.indexOf('[') + 1)
 
           const secondCommaIndex = consoleStatement.indexOf(',', consoleStatement.indexOf(',') + 1)
-          const openBracketPosition = new vscode.Position(currentPosition.line, secondCommaIndex + 1)
+          const openBracketPosition = new vscode.Position(currentPosition.line, selectionStart.character + secondCommaIndex + 1)
 
           editor.selections = [
             new vscode.Selection(openBracketPosition, openBracketPosition),
