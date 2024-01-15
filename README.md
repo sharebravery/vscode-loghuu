@@ -37,4 +37,4 @@ Contributions are welcome! Please fork the repository and create a pull request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+[MIT](LICENSE) License © 2022 [sharebravery](https://github.com/sharebravery)

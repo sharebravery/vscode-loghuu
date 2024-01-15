@@ -10,4 +10,6 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(insertConsole);
 }
 
-export function deactivate() { }
+export function deactivate() {
+
+}

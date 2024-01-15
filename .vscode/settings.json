@@ -1,38 +1,68 @@
-// Place your settings in this file to overwrite default and user settings.
 {
-    "files.exclude": {
-        "out": false // set this to true to hide the "out" folder with the compiled JS files
-    },
-    "search.exclude": {
-        "out": true // set this to false to include "out" folder in search results
-    },
-    // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
-    "typescript.tsc.autoDetect": "off",
-    "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#696383",
-        "activityBar.background": "#696383",
-        "activityBar.foreground": "#ffffff",
-        "activityBar.inactiveForeground": "#ffffff99",
-        "activityBarBadge.background": "#d79687",
-        "activityBarBadge.foreground": "#15202b",
-        "commandCenter.border": "#ffffff99",
-        "panel.border": "#696383",
-        "sash.hoverBorder": "#696383",
-        "statusBar.background": "#524d66",
-        "statusBar.border": "#524d66",
-        "statusBar.debuggingBackground": "#61664d",
-        "statusBar.debuggingBorder": "#61664d",
-        "statusBar.debuggingForeground": "#ffffff",
-        "statusBar.foreground": "#ffffff",
-        "statusBarItem.hoverBackground": "#696383",
-        "statusBarItem.remoteBackground": "#524d66",
-        "statusBarItem.remoteForeground": "#ffffff",
-        "tab.activeBorder": "#696383",
-        "titleBar.activeBackground": "#524d66",
-        "titleBar.activeForeground": "#ffffff",
-        "titleBar.border": "#524d66",
-        "titleBar.inactiveBackground": "#524d6699",
-        "titleBar.inactiveForeground": "#ffffff99"
-    },
-    "peacock.color": "#524d66"
+  // Enable the ESlint flat config support
+  "eslint.experimental.useFlatConfig": true,
+
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+
+  // Auto fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "never"
+  },
+
+  // Silent the stylistic rules in you IDE, but still auto fix them
+  "eslint.rules.customizations": [
+    { "rule": "style/*", "severity": "off" },
+    { "rule": "*-indent", "severity": "off" },
+    { "rule": "*-spacing", "severity": "off" },
+    { "rule": "*-spaces", "severity": "off" },
+    { "rule": "*-order", "severity": "off" },
+    { "rule": "*-dangle", "severity": "off" },
+    { "rule": "*-newline", "severity": "off" },
+    { "rule": "*quotes", "severity": "off" },
+    { "rule": "*semi", "severity": "off" }
+  ],
+
+  // Enable eslint for all supported languages
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml"
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#c64e8d",
+    "activityBar.background": "#c64e8d",
+    "activityBar.foreground": "#ffffff",
+    "activityBar.inactiveForeground": "#ffffff99",
+    "activityBarBadge.background": "#92c956",
+    "activityBarBadge.foreground": "#15202b",
+    "commandCenter.border": "#ffffff99",
+    "panel.border": "#c64e8d",
+    "sash.hoverBorder": "#c64e8d",
+    "statusBar.background": "#aa3773",
+    "statusBar.border": "#aa3773",
+    "statusBar.debuggingBackground": "#37aa6e",
+    "statusBar.debuggingBorder": "#37aa6e",
+    "statusBar.debuggingForeground": "#15202b",
+    "statusBar.foreground": "#ffffff",
+    "statusBarItem.hoverBackground": "#c64e8d",
+    "statusBarItem.remoteBackground": "#aa3773",
+    "statusBarItem.remoteForeground": "#ffffff",
+    "tab.activeBorder": "#c64e8d",
+    "titleBar.activeBackground": "#aa3773",
+    "titleBar.activeForeground": "#ffffff",
+    "titleBar.border": "#aa3773",
+    "titleBar.inactiveBackground": "#aa377399",
+    "titleBar.inactiveForeground": "#ffffff99"
+  },
+  "peacock.color": "#aa3773"
 }
