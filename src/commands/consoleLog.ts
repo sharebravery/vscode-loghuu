@@ -1,6 +1,6 @@
 // commands/loghuu.consoleLog.ts
 import * as vscode from 'vscode'
-import { getRandomColor } from '../utils/getRandomColor'
+import { buildConsoleStatement } from '../utils/buildConsoleStatement'
 
 export function insertConsoleStatement() {
   const disposable = vscode.commands.registerCommand('loghuu.consoleLog', async () => {
@@ -13,20 +13,6 @@ export function insertConsoleStatement() {
       const currentLineNumber = editor.selection.active.line
       const currentLineText = editor.document.lineAt(currentLineNumber).text
 
-      // 生成随机颜色，最多尝试10次
-      const randomColor = getRandomColor(10)
-
-      // 构造要插入的 console 语句
-      let consoleStatement: string
-      if (selectedText && (selectedText.toLowerCase() === 'error' || selectedText.toLowerCase() === 'err')) {
-        consoleStatement = `console.error('%c[${selectedText}]-${currentLineNumber}:', 'color: ${randomColor}', ${selectedText});\n`
-      }
-      else {
-        consoleStatement = selectedText
-          ? `console.log('%c[${selectedText}]-${currentLineNumber}:', 'color: ${randomColor}', ${selectedText});\n`
-          : `console.log(' %c[]-${currentLineNumber}:', 'color: ${randomColor}',);`
-      }
-
       // 获取当前光标位置
       const currentPosition = editor.selection.active
 
@@ -35,6 +21,8 @@ export function insertConsoleStatement() {
 
       await editor.edit(async (editBuilder) => {
         if (selectedText) {
+          const consoleStatement = buildConsoleStatement(selectedText, currentLineNumber + 2)
+
           // 如果有选中文本，则插入到下一行，并保持相同的缩进
           await editBuilder.insert(new vscode.Position(currentLineNumber + 1, 0), currentLineIndentation + consoleStatement)
 
@@ -45,6 +33,8 @@ export function insertConsoleStatement() {
           editor.selection = new vscode.Selection(openBracketPosition, closeBracketPosition)
         }
         else {
+          const consoleStatement = buildConsoleStatement(selectedText, currentLineNumber)
+
           // 如果没有选中文本，则插入到当前行
           await editBuilder.insert(currentPosition, consoleStatement)
 
