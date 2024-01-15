@@ -2,7 +2,7 @@
   "publisher": "sharebravery",
   "name": "loghuu",
   "displayName": "Loghuu",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@8.10.5",
   "description": "VSCode extension for enhanced console logging and code region management.",
