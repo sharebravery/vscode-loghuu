@@ -18,11 +18,11 @@ export function insertConsoleStatement() {
       // 构造要插入的 console 语句
       let consoleStatement: string
       if (selectedText && (selectedText.toLowerCase() === 'error' || selectedText.toLowerCase() === 'err')) {
-        consoleStatement = `\nconsole.error('%c[${selectedText}]-${currentLineNumber}:', 'color: ${randomColor}', ${selectedText});`
+        consoleStatement = `console.error('%c[${selectedText}]-${currentLineNumber}:', 'color: ${randomColor}', ${selectedText});\n`
       }
       else {
         consoleStatement = selectedText
-          ? `\nconsole.log('%c[${selectedText}]-${currentLineNumber}:', 'color: ${randomColor}', ${selectedText});`
+          ? `console.log('%c[${selectedText}]-${currentLineNumber}:', 'color: ${randomColor}', ${selectedText});\n`
           : `console.log(' %c[]-${currentLineNumber}:', 'color: ${randomColor}',);`
       }
 
