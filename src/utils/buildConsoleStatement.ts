@@ -5,6 +5,7 @@ import { getRandomColor } from './getRandomColor'
 export function buildConsoleStatement(selectedText: string, currentLineNumber: number, commandType: string): string {
   const config = vscode.workspace.getConfiguration()
 
+  // TODO 多个差异颜色以提供外部模板字符串使用
   const randomColor = getRandomColor()
   const prefix = config.get('prefix') as string
   const templateString = config.get('templateString') as string
