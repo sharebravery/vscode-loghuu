@@ -4,8 +4,9 @@ Loghuu is a Visual Studio Code extension that enhances console logging by provid
 
 ## Features
 
-- Insert console.log statements with visible colors.
+- Insert `console.log` statements with visible colors.
 - Automatically add regions around selected code.
+- Support for `console.warn`, `console.info`, `console.debug`, and `console.dir`.
 
 ## Installation
 
@@ -19,17 +20,38 @@ Loghuu is a Visual Studio Code extension that enhances console logging by provid
 ### Insert Console.log Statement
 
 1. Select the code you want to log.
-2. Press `Ctrl+L` (or `Cmd+L` on macOS) to insert a console.log statement with visible colors.
+2. Press `Ctrl+L` (or `Cmd+L` on macOS) to insert a `console.log` statement with visible colors.
 
 ### Add Region to Selection
 
 1. Select the code you want to wrap with a region.
 2. Press `Ctrl+Shift+R` to add a region around the selected code.
 
+### Additional Commands
+
+- ~~`Ctrl+L+W` (or `Cmd+L+W` on macOS): Insert `console.warn` statement.~~
+- ~~`Ctrl+L+I` (or `Cmd+L+I` on macOS): Insert `console.info` statement.~~
+- ~~`Ctrl+L+D` (or `Cmd+L+D` on macOS): Insert `console.debug` statement.~~
+- ~~`Ctrl+L+R` (or `Cmd+L+R` on macOS): Insert `console.dir` statement.~~
+
 ## Configuration
 
 - The extension automatically adapts to the theme's brightness (light or dark).
 - If the selected text is 'error' or 'err', it will use `console.error` instead of `console.log`.
+
+### Prefix
+
+- **Key**: `loghuu.prefix`
+- **Type**: String
+- **Default**: "🚀"
+- **Description**: A custom prefix for the log statement.
+
+### Template String
+
+- **Key**: `loghuu.templateString`
+- **Type**: String
+- **Default**: "console.log('%c${prefix}[${selectedText}]-${currentLineNumber}:', 'color: ${randomColor}', ${selectedText});\n"
+- **Description**: Custom template string for the `console.log` statement. You can use variables like `${prefix}`, `${selectedText}`, `${currentLineNumber}`, and `${randomColor}`.
 
 ## Contributing
 
