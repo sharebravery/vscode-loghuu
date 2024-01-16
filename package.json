@@ -28,29 +28,117 @@
     "onCommand:loghuu.addRegionToSelection"
   ],
   "contributes": {
+    "configuration": {
+      "title": "Loghuu",
+      "properties": {
+        "prefix": {
+          "type": "string",
+          "default": "🚀",
+          "description": "A custom prefix for print"
+        },
+        "templateString": {
+          "type": "string",
+          "default": "console.log('%c${prefix}[${selectedText}]-${currentLineNumber}:', 'color: ${randomColor}', ${selectedText});\n",
+          "description": "custom template string(自定义模板字符串)，prefix，selectedText，currentLineNumber，randomColor为变量"
+        }
+      }
+    },
     "commands": [
+      {
+        "command": "loghuu.addRegionToSelection",
+        "title": "Add Region to Selection",
+        "category": "Loghuu"
+      },
       {
         "command": "loghuu.consoleLog",
         "title": "Loghuu ConsoleLog",
         "category": "Loghuu"
       },
       {
-        "command": "loghuu.addRegionToSelection",
-        "title": "Add Region to Selection",
+        "command": "loghuu.consoleWarn",
+        "title": "Loghuu ConsoleWarn",
+        "category": "Loghuu"
+      },
+      {
+        "command": "loghuu.consoleInfo",
+        "title": "Loghuu ConsoleInfo",
+        "category": "Loghuu"
+      },
+      {
+        "command": "loghuu.consoleDebug",
+        "title": "Loghuu ConsoleDebug",
+        "category": "Loghuu"
+      },
+      {
+        "command": "loghuu.consoleDir",
+        "title": "Loghuu ConsoleDir",
         "category": "Loghuu"
       }
     ],
     "keybindings": [
       {
+        "key": "ctrl+shift+r",
+        "command": "loghuu.addRegionToSelection",
+        "when": "editorTextFocus && editorHasSelection"
+      },
+      {
         "command": "loghuu.consoleLog",
         "key": "ctrl+l",
         "mac": "cmd+l",
         "when": "editorTextFocus"
-      },
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "loghuu.addRegionToSelection",
+          "group": "Loghuu",
+          "when": "editorTextFocus && editorHasSelection"
+        },
+        {
+          "submenu": "loghuu.commands",
+          "group": "Loghuu",
+          "title": "Loghuu Commands"
+        }
+      ],
+      "loghuu.commands": [
+        {
+          "command": "loghuu.consoleLog",
+          "group": "Loghuu",
+          "title": "Loghuu ConsoleLog",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "loghuu.consoleWarn",
+          "group": "Loghuu",
+          "title": "Loghuu ConsoleWarn",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "loghuu.consoleInfo",
+          "group": "Loghuu",
+          "title": "Loghuu ConsoleInfo",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "loghuu.consoleDebug",
+          "group": "Loghuu",
+          "title": "Loghuu ConsoleDebug",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "loghuu.consoleDir",
+          "group": "Loghuu",
+          "title": "Loghuu ConsoleDir",
+          "when": "editorTextFocus"
+        }
+
+      ]
+    },
+    "submenus": [
       {
-        "key": "ctrl+shift+r",
-        "command": "loghuu.addRegionToSelection",
-        "when": "editorTextFocus && editorHasSelection"
+        "id": "loghuu.commands",
+        "label": "Loghuu Console"
       }
     ]
   },
